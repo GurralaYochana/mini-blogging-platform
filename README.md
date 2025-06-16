@@ -11,8 +11,11 @@ A full-stack minimal blogging platform built with:
 ## 📁 Project Structure
 
 MiniBlog/
+
 ├── frontend/ # React + Vite frontend
+
 ├── backend/ # Express + MongoDB backend
+
 └── README.md # You're here!
 
 ---
