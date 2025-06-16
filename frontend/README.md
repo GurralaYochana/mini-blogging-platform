@@ -26,6 +26,7 @@ This is the **frontend** for the **Mini Blogging Platform**, built with:
 > Make sure the backend server is running on **`http://localhost:4000`** (default).
 
 ```bash
+git clone https://github.com/GurralaYochana/mini-blogging-platform.git
 # 1  Navigate to the frontend folder
 cd frontend
 
@@ -95,7 +96,7 @@ src/
 
 ## 📄 License
 
-MIT — free to use and modify.
+This project is licensed under the MIT License.
 
 ---
 

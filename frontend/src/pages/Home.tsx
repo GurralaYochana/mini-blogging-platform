@@ -31,11 +31,12 @@ export default function Home() {
   const [loading, setLoad] = useState(true);
 
   useEffect(() => {
-    axios
-      .get("/posts")
-      .then((res) => setPosts(res.data.data))
-      .catch(() => setErrorMsg("Error while fetching Posts"))
-      .finally(() => setLoad(false));
+    if (token)
+      axios
+        .get("/posts")
+        .then((res) => setPosts(res.data.data))
+        .catch(() => setErrorMsg("Error while fetching Posts"))
+        .finally(() => setLoad(false));
   }, []);
 
   if (!token) {

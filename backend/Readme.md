@@ -26,8 +26,8 @@ MiniBlog is a simple blogging platform backend built with Node.js, Express, and 
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/miniblog.git
-cd miniblog
+git clone https://github.com/GurralaYochana/mini-blogging-platform.git
+cd backend
 ```
 
 ### 2. Install Dependencies
@@ -41,7 +41,7 @@ npm install
 Create a `.env` file in the root directory:
 
 ```env
-PORT=3000
+PORT=4000
 MONGODB_URI=mongodb://localhost:27017/miniblog
 JWT_SECRET=your-secret-key
 ```
@@ -60,7 +60,7 @@ npm run build # to compile TypeScript to JS
 OpenAPI spec is available at:
 
 ```
-http://localhost:3000/api-docs
+http://localhost:4000/api-docs
 ```
 
 You can manually validate or convert the YAML to JSON using:
