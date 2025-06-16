@@ -3,8 +3,6 @@ import { useParams } from "react-router-dom";
 import {
   Typography,
   Container,
-  Skeleton,
-  Stack,
   Box,
   Avatar,
   Tabs,
@@ -16,6 +14,7 @@ import { listUserPosts } from "../api/post";
 import type { Author, Post } from "./Home";
 import { Posts } from "../components/Post";
 import { stringAvatar } from "../utils/avatarColor";
+import { ProfileSkeleton } from "../components/Skeletons/ProfileSkeleton";
 
 const initialStateUser = {
   _id: "",
@@ -43,10 +42,15 @@ export default function Profile() {
 
   return (
     <Container maxWidth="sm" sx={{ mt: 4 }}>
+      {loading && <ProfileSkeleton />}
+
       {/* --- header section (always visible) --- */}
       {!loading && (
         <Box sx={{ display: "flex", alignItems: "center", mb: 2, gap: "1rem" }}>
-          <Avatar {...stringAvatar(user.username)} />
+          <Avatar
+            {...stringAvatar(user.username)}
+            sx={{ ...stringAvatar(user.username).sx, width: 70, height: 70 }}
+          />
           <Box>
             <Typography variant="h5">{user.username}</Typography>
             <Typography
@@ -58,14 +62,6 @@ export default function Profile() {
             </Typography>
           </Box>
         </Box>
-      )}
-
-      {loading && (
-        <Stack spacing={2}>
-          {[...Array(3)].map((_, i) => (
-            <Skeleton key={i} variant="rectangular" height={100} />
-          ))}
-        </Stack>
       )}
 
       <Tabs

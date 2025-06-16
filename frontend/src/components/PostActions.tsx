@@ -60,7 +60,7 @@ export const PostActions = ({ postId, setPosts }: PostActionType) => {
 
       <Menu
         anchorEl={anchorEl}
-        id="account-menu"
+        id="post-menu"
         open={open}
         onClose={handleClose}
         onClick={handleClose}
