@@ -5,7 +5,7 @@ import { authenticate } from "../middlewares/auth";
 const router = Router();
 router.post("/", authenticate, postCtrl.create);
 router.put("/:id", authenticate, postCtrl.update);
-router.get("/:id", authenticate, postCtrl.get);
+router.get("/:id", authenticate, postCtrl.findByIdWithAuthor);
 router.delete("/:id", authenticate, postCtrl.deletePostById);
 router.get("/user/:userId", authenticate, postCtrl.getPostsByUser);
 router.get("/", authenticate, postCtrl.getPosts);

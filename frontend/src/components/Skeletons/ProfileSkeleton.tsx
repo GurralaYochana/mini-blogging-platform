@@ -5,19 +5,19 @@ export const ProfileSkeleton = () => {
   return (
     <>
       <Box sx={{ display: "flex", alignItems: "center", mb: 2, gap: "1rem" }}>
-        <Skeleton variant="circular" height={50}>
+        <Skeleton variant="circular" height={50} animation="wave">
           <Avatar />
         </Skeleton>
         <Box width={"50%"}>
-          <Skeleton width={"100%"}>
+          <Skeleton width={"100%"} animation="wave">
             <Typography>.</Typography>
           </Skeleton>
-          <Skeleton width={"100%"}>
+          <Skeleton width={"100%"} animation="wave">
             <Typography>.</Typography>
           </Skeleton>
         </Box>
       </Box>
-      <Skeleton>
+      <Skeleton animation="wave">
         <Tabs value={0}>
           <Tab />
         </Tabs>

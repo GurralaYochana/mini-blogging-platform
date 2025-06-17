@@ -13,3 +13,4 @@ export const deletePost = (id: string) => api.delete(`/posts/${id}`);
 export const getPost = (id: string) => api.get(`/posts/${id}`);
 export const listUserPosts = (userId: string) =>
   api.get(`/posts/user/${userId}`);
+export const getPostsList = () => api.get("/posts");

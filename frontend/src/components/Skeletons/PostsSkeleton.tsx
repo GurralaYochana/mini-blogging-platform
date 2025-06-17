@@ -5,15 +5,20 @@ export const PostsSkeleton = () => {
     <Stack spacing={2}>
       {[...Array(3)].map((_, i) => (
         <>
-          <Skeleton key={i} variant="rectangular" height={70} />
+          <Skeleton
+            key={i}
+            variant="rectangular"
+            height={70}
+            animation="wave"
+          />
           <Box sx={{ display: "flex", alignItems: "center" }}>
             <Box sx={{ margin: 1 }}>
-              <Skeleton key={i} variant="circular" height={50}>
+              <Skeleton key={i} variant="circular" height={50} animation="wave">
                 <Avatar></Avatar>
               </Skeleton>
             </Box>
             <Box sx={{ width: "100%" }}>
-              <Skeleton key={i} width={"100%"}>
+              <Skeleton key={i} width={"100%"} animation="wave">
                 <Typography>.</Typography>
               </Skeleton>
             </Box>

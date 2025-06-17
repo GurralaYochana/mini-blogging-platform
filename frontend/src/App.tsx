@@ -20,6 +20,7 @@ const Register = lazy(() => import("./pages/Register"));
 const Profile = lazy(() => import("./pages/Profile"));
 const CreateNEditPost = lazy(() => import("./pages/CreateNEditPost"));
 const UsersPage = lazy(() => import("./pages/UsersPage"));
+const PostDetails = lazy(() => import("./pages/PostDetails"));
 
 export default function App() {
   const { token, successMsg, setSuccessMsg, errorMsg, setErrorMsg } = useAuth();
@@ -77,10 +78,15 @@ export default function App() {
             element={token ? <CreateNEditPost /> : <Navigate to="/login" />}
           />
           <Route
-            path="/post/:id/edit"
+            path="/post/edit/:id"
             element={
               token ? <CreateNEditPost edit={true} /> : <Navigate to="/login" />
             }
+          />
+
+          <Route
+            path="/post/:id"
+            element={token ? <PostDetails /> : <Navigate to="/login" />}
           />
 
           <Route

@@ -72,13 +72,18 @@ export const deletePostById: RequestHandler = async (req, res, next) => {
   }
 };
 
-/* GET /api/posts/:id  */
-export const get: RequestHandler = async (req, res) => {
-  const post = await postSvc.findById(new ObjectId(req.params.id));
+/**
+ * Find one post and embed its author (minus password).
+ */
+export const findByIdWithAuthor: RequestHandler = async (req, res, next) => {
+  const id = new ObjectId(req.params.id);
+  const [post] = await postSvc.findPostWithAuthor(id);
+
   if (!post) {
-    res.status(404).json({ error: "Not found" });
+    res.status(404).json({ error: "Not found or not owner" });
     return;
   }
+
   res.status(200).json({
     message: "Successfully fetched the post",
     data: post,

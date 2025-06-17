@@ -41,23 +41,26 @@ export default function Profile() {
   }, [userId, loginUserId]);
 
   return (
-    <Container maxWidth="sm" sx={{ mt: 4 }}>
+    <Container maxWidth="md" sx={{ mt: 4 }}>
       {loading && <ProfileSkeleton />}
 
       {/* --- header section (always visible) --- */}
       {!loading && (
-        <Box sx={{ display: "flex", alignItems: "center", mb: 2, gap: "1rem" }}>
+        <Box sx={{ display: "flex", alignItems: "center", mb: 3, gap: 2 }}>
           <Avatar
             {...stringAvatar(user.username)}
-            sx={{ ...stringAvatar(user.username).sx, width: 70, height: 70 }}
+            sx={{
+              ...stringAvatar(user.username).sx,
+              width: 72,
+              height: 72,
+              fontSize: 28,
+            }}
           />
           <Box>
-            <Typography variant="h5">{user.username}</Typography>
-            <Typography
-              variant="caption"
-              color="text.secondary"
-              component={"i"}
-            >
+            <Typography variant="h5" fontWeight={600}>
+              {user.username}
+            </Typography>
+            <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>
               {user.email}
             </Typography>
           </Box>

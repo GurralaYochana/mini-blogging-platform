@@ -15,8 +15,7 @@ import { deletePost } from "../api/post";
 
 type PostActionType = {
   postId: string;
-  posts: Array<Post>;
-  setPosts: React.Dispatch<React.SetStateAction<Post[]>>;
+  setPosts?: React.Dispatch<React.SetStateAction<Post[]>>;
 };
 
 export const PostActions = ({ postId, setPosts }: PostActionType) => {
@@ -34,7 +33,7 @@ export const PostActions = ({ postId, setPosts }: PostActionType) => {
     try {
       await deletePost(postId);
       setSuccessMsg("Post deleted successfully");
-      await setPosts((prev) => prev.filter((p) => p._id !== postId));
+      await setPosts?.((prev) => prev.filter((p) => p._id !== postId));
     } catch (err) {
       setErrorMsg("Error while deleting post");
       console.error(err);
@@ -95,7 +94,7 @@ export const PostActions = ({ postId, setPosts }: PostActionType) => {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <MenuItem component={RouterLink} to={`/post/${postId}/edit`}>
+        <MenuItem component={RouterLink} to={`/post/edit/${postId}`}>
           <ListItemIcon>
             <EditOutlined fontSize="small" />
           </ListItemIcon>

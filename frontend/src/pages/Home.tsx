@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import axios from "../api/axios";
 import { Typography, Container, Box } from "@mui/material";
 import { useAuth } from "../contexts/AuthContext";
 import { Posts } from "../components/Post";
 import { PostsSkeleton } from "../components/Skeletons/PostsSkeleton";
+import { getPostsList } from "../api/post";
 
 export type Author = {
   _id: string;
@@ -27,8 +27,7 @@ export default function Home() {
 
   useEffect(() => {
     if (token)
-      axios
-        .get("/posts")
+      getPostsList()
         .then((res) => setPosts(res.data.data))
         .catch(() => setErrorMsg("Error while fetching Posts"))
         .finally(() => setLoad(false));
@@ -45,7 +44,7 @@ export default function Home() {
   }
 
   return (
-    <Container maxWidth="sm" sx={{ mt: 4 }}>
+    <Container maxWidth="md" sx={{ mt: 4 }}>
       <Typography variant="h4" gutterBottom>
         Latest Posts
       </Typography>
@@ -54,7 +53,7 @@ export default function Home() {
 
       {!loading && (
         <>
-          {posts.length === 0 ? (
+          {posts?.length === 0 ? (
             <Typography>
               You haven’t written any posts yet. Start sharing your thoughts!
             </Typography>

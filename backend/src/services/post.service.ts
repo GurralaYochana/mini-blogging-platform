@@ -33,6 +33,24 @@ export const findById = async (id: ObjectId) => {
   return await coll().findOne({ _id: id }); // returns Post | null
 };
 
+export const findPostWithAuthor = async (id: ObjectId) => {
+  return await coll()
+    .aggregate([
+      { $match: { _id: id } },
+      {
+        $lookup: {
+          from: "users",
+          localField: "authorId",
+          foreignField: "_id",
+          as: "author",
+        },
+      },
+      { $unwind: "$author" },
+      { $project: { "author.password": 0 } }, // strip password hash
+    ])
+    .toArray();
+};
+
 export const postsByUser = async (userId: ObjectId) => {
   return coll()
     .aggregate([
