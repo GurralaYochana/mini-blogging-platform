@@ -11,13 +11,16 @@ import {
   Menu,
   ListItemIcon,
 } from "@mui/material";
-import { AccountCircleOutlined, GroupOutlined } from "@mui/icons-material";
-import Brightness4Icon from "@mui/icons-material/Brightness4";
-import BrightnessHighIcon from "@mui/icons-material/BrightnessHigh";
-import PostAddIcon from "@mui/icons-material/PostAdd";
-import LoginIcon from "@mui/icons-material/Login";
-import LogoutIcon from "@mui/icons-material/Logout";
-import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
+import {
+  AccountCircleOutlined,
+  GroupOutlined,
+  Brightness4,
+  BrightnessHigh,
+  PostAdd,
+  Login,
+  Logout,
+  PersonAddAlt,
+} from "@mui/icons-material";
 import { useAuth } from "../contexts/AuthContext";
 import { useState } from "react";
 
@@ -49,22 +52,37 @@ export default function Navbar({ toggleTheme }: Props) {
         </Typography>
 
         <Tooltip title="Toggle light/dark">
-          <IconButton color="inherit" onClick={toggleTheme} size="large">
+          <IconButton
+            color="inherit"
+            onClick={toggleTheme}
+            size="large"
+            data-testid="theme-icon"
+          >
             {/* theme icon swaps automatically via CSS */}
-            <Brightness4Icon sx={{ display: { xs: "none", md: "block" } }} />
-            <BrightnessHighIcon sx={{ display: { xs: "block", md: "none" } }} />
+            <Brightness4 sx={{ display: { xs: "none", md: "block" } }} />
+            <BrightnessHigh sx={{ display: { xs: "block", md: "none" } }} />
           </IconButton>
         </Tooltip>
 
         {token ? (
           <>
             <Tooltip title="New Post">
-              <IconButton component={RouterLink} to="/post/new" color="inherit">
-                <PostAddIcon />
+              <IconButton
+                component={RouterLink}
+                to="/post/new"
+                color="inherit"
+                data-testid="add-post-icon"
+              >
+                <PostAdd />
               </IconButton>
             </Tooltip>
             <Tooltip title="Users">
-              <IconButton component={RouterLink} to="/users" color="inherit">
+              <IconButton
+                component={RouterLink}
+                to="/users"
+                color="inherit"
+                data-testid="users-icon"
+              >
                 <GroupOutlined />
               </IconButton>
             </Tooltip>
@@ -78,6 +96,7 @@ export default function Navbar({ toggleTheme }: Props) {
                   aria-haspopup="true"
                   aria-expanded={open ? "true" : undefined}
                   color="inherit"
+                  data-testid="profile-icon"
                 >
                   <AccountCircleOutlined />
                 </IconButton>
@@ -122,15 +141,19 @@ export default function Navbar({ toggleTheme }: Props) {
                     component={RouterLink}
                     to="/profile"
                     color="inherit"
+                    data-testid="profile-icon"
                   >
                     <ListItemIcon>
                       <AccountCircleOutlined />
                     </ListItemIcon>
                     Profile
                   </MenuItem>
-                  <MenuItem onClick={() => setToken(null)}>
+                  <MenuItem
+                    onClick={() => setToken(null)}
+                    data-testid="logout-icon"
+                  >
                     <ListItemIcon>
-                      <LogoutIcon />
+                      <Logout />
                     </ListItemIcon>
                     Logout
                   </MenuItem>
@@ -143,14 +166,16 @@ export default function Navbar({ toggleTheme }: Props) {
                     component={RouterLink}
                     to="/profile"
                     color="inherit"
+                    data-testid="profile-icon"
                   >
                     <AccountCircleOutlined />
                   </IconButton>
                 </Tooltip>
                 <Button
-                  startIcon={<LogoutIcon />}
+                  startIcon={<Logout />}
                   color="inherit"
                   onClick={() => setToken(null)}
+                  data-testid="logout-icon"
                 >
                   Logout
                 </Button>
@@ -163,7 +188,8 @@ export default function Navbar({ toggleTheme }: Props) {
               component={RouterLink}
               to="/login"
               color="inherit"
-              startIcon={<LoginIcon />}
+              startIcon={<Login />}
+              data-testid="login-icon"
             >
               Login
             </Button>
@@ -171,7 +197,8 @@ export default function Navbar({ toggleTheme }: Props) {
               component={RouterLink}
               to="/register"
               color="inherit"
-              startIcon={<PersonAddAltIcon />}
+              startIcon={<PersonAddAlt />}
+              data-testid="sign-up-icon"
             >
               Sign Up
             </Button>

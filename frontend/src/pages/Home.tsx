@@ -13,6 +13,7 @@ export type Author = {
 
 export interface Post {
   _id: string;
+  blogTitle: string;
   blogContent: string;
   createdAt: string;
   updatedAt: string;

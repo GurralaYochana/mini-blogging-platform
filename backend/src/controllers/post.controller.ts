@@ -9,15 +9,15 @@ type PostWithAuthor = Post & { author: User };
 
 /* POST /api/posts  (auth) */
 export const create: RequestHandler = async (req: AuthRequest, res) => {
-  const blogContent = req.body.blogContent;
-  if (!blogContent) {
-    res.status(400).json({ error: "Blog content required" });
+  const reqBody = req.body;
+  if (!reqBody.blogContent && !reqBody.blogTitle) {
+    res.status(400).json({ error: "Blog title and content required" });
     return;
   }
 
   const post = await postSvc.create({
     authorId: req.userId!,
-    blogContent,
+    ...reqBody,
   } as any);
 
   res.status(200).json({
@@ -29,9 +29,14 @@ export const create: RequestHandler = async (req: AuthRequest, res) => {
 /* PUT /api/posts/:id  (auth) */
 export const update: RequestHandler = async (req: AuthRequest, res) => {
   const id = new ObjectId(req.params.id);
-  const blogContent = req.body.blogContent;
+  const reqBody = req.body;
 
-  const post = await postSvc.update(id, req?.userId!, blogContent);
+  const post = await postSvc.update(
+    id,
+    req?.userId!,
+    reqBody.blogTitle,
+    reqBody.blogContent
+  );
   if (!post) {
     res.status(404).json({ error: "Not found or not owner" });
     return;
@@ -135,6 +140,7 @@ export const getPosts = async (
         {
           $project: {
             _id: 1,
+            blogTitle: 1,
             blogContent: 1,
             createdAt: 1,
             updatedAt: 1,

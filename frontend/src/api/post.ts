@@ -1,9 +1,14 @@
 import api from "./axios";
 
-export const createPost = (blogContent: string) =>
-  api.post("/posts", { blogContent });
-export const updatePost = (id: string, blogContent: string) =>
-  api.put(`/posts/${id}`, { blogContent });
+export type PostReqBodyType = {
+  blogTitle: string;
+  blogContent: string;
+};
+
+export const createPost = (reqBody: PostReqBodyType) =>
+  api.post("/posts", reqBody);
+export const updatePost = (id: string, reqBody: PostReqBodyType) =>
+  api.put(`/posts/${id}`, reqBody);
 export const deletePost = (id: string) => api.delete(`/posts/${id}`);
 export const getPost = (id: string) => api.get(`/posts/${id}`);
 export const listUserPosts = (userId: string) =>

@@ -15,7 +15,7 @@ interface AuthCtx {
   userId: string;
   setUserId: React.Dispatch<React.SetStateAction<string>>;
 }
-const Ctx = createContext<AuthCtx>({} as AuthCtx);
+export const Ctx = createContext<AuthCtx>({} as AuthCtx);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [token, setTok] = useState<string | null>(() =>

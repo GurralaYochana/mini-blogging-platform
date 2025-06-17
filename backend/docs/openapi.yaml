@@ -29,11 +29,12 @@ components:
       type: object
       properties:
         _id: { type: string, example: "664ef8c0f2316b3c046f5a12" }
-        blogContent: { type: string, example: "Hello world!" }
+        blogTitle: { type: string, example: "Hello world!" }
+        blogContent: { type: string, example: "Good Morning" }
         authorId: { type: string }
         createdAt: { type: string, format: date-time }
         updatedAt: { type: string, format: date-time }
-      required: [_id, blogContent, authorId, createdAt, updatedAt]
+      required: [_id, blogTitle, blogContent, authorId, createdAt, updatedAt]
 
     PostWithAuthor:
       allOf:
@@ -61,14 +62,16 @@ components:
 
     PostCreateBody:
       type: object
-      required: [blogContent]
+      required: [blogTitle, blogContent]
       properties:
-        blogContent: { type: string, example: "My first post" }
+        blogTitle: { type: string, example: "My first post" }
+        blogContent: { type: string, example: "friends" }
 
     PostUpdateBody:
       type: object
-      required: [blogContent]
+      required: [blogTitle, blogContent]
       properties:
+        blogTitle: { type: string, example: "Hi friends" }
         blogContent: { type: string, example: "Updated text" }
 
     # ───── Generic responses ──────────────────────────────────────
@@ -231,7 +234,7 @@ paths:
                     { type: string, example: "Post created successfully" }
                   data: { $ref: "#/components/schemas/Post" }
         "400":
-          description: Missing blogContent
+          description: Missing blogTitle or blogContent
           content:
             application/json:
               schema: { $ref: "#/components/schemas/ErrorResponse" }

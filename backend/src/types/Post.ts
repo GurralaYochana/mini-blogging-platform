@@ -7,7 +7,7 @@ export interface AuthRequest extends Request {
 
 export interface Post {
   _id: ObjectId;
-  // blogTitle: string;
+  blogTitle: string;
   blogContent: string;
   author: ObjectId;
   createdAt: Date;

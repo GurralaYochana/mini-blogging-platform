@@ -18,6 +18,10 @@ export const Posts = ({ posts, setPosts }: PostType) => {
       {posts.map((p) => (
         <Card key={p._id} sx={{ mb: 2, boxShadow: 2 }}>
           <CardContent>
+            {/* Blog Title */}
+            <Typography variant="h6" gutterBottom>
+              {p.blogTitle}
+            </Typography>
             {/* Blog Content */}
             <Typography
               variant="body1"

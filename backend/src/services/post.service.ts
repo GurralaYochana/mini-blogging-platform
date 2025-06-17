@@ -17,11 +17,12 @@ export const create = async (post: Post) => {
 export const update = async (
   id: ObjectId,
   authorId: ObjectId,
+  blogTitle: string,
   blogContent: string
 ): Promise<Post | null> => {
   const result = await coll().findOneAndUpdate(
     { _id: id, authorId },
-    { $set: { blogContent, updatedAt: new Date() } },
+    { $set: { blogTitle, blogContent, updatedAt: new Date() } },
     { returnDocument: "after" }
   );
 

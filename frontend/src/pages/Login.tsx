@@ -108,6 +108,7 @@ export default function Login() {
             sx={{ mt: 2, width: "100%" }}
           >
             <TextField
+              data-testid="email"
               label="Email"
               fullWidth
               margin="normal"
@@ -118,6 +119,7 @@ export default function Login() {
               required
             />
             <TextField
+              data-testid="password"
               label="Password"
               fullWidth
               margin="normal"
