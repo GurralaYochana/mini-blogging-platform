@@ -45,7 +45,7 @@ export default function Home() {
 
   return (
     <Container maxWidth="md" sx={{ mt: 4 }}>
-      <Typography variant="h4" gutterBottom data-testid="posts-title">
+      <Typography variant="h4" gutterBottom data-testid="latest-posts-title">
         Latest Posts
       </Typography>
 
