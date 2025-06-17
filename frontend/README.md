@@ -1,4 +1,4 @@
-# 🖼️ Mini Blogging Platform – Frontend
+# 🖼️ TALES (Mini Blogging Platform) – Frontend
 
 This is the **frontend** for the **Mini Blogging Platform**, built with:
 

@@ -1,4 +1,4 @@
-# 📝 mini-blogging-platform
+# 📝 Tales (mini-blogging-platform)
 
 A full-stack minimal blogging platform built with:
 

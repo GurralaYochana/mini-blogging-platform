@@ -1,4 +1,4 @@
-# MiniBlog API
+# TALES (Mini Blogging Platform) – Backend
 
 MiniBlog is a simple blogging platform backend built with Node.js, Express, and MongoDB. It supports authentication, post creation, user listing, and more. It also integrates OpenAPI documentation via Swagger UI.
 
