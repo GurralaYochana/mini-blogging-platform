@@ -4,7 +4,7 @@ import { MemoryRouter } from "react-router-dom";
 import Login from "./Login";
 import { AuthProvider } from "../contexts/AuthContext";
 import * as authApi from "../api/auth";
-import { mockJwtToken, mockUserData } from "../test/mockData";
+import { mockJwtToken, mockUsersData } from "../test/mockData";
 
 vi.mock("../api/auth");
 
@@ -14,7 +14,7 @@ describe("Login Page", () => {
     vi.spyOn(authApi, "login").mockResolvedValueOnce({
       data: {
         token: mockJwtToken,
-        user: mockUserData,
+        user: mockUsersData[0],
       },
     } as any);
 
@@ -27,7 +27,7 @@ describe("Login Page", () => {
     );
 
     fireEvent.change(screen.getByLabelText(/email/i), {
-      target: { value: "mock@gmail.com" },
+      target: { value: mockUsersData[0].email },
     });
     fireEvent.change(screen.getAllByLabelText(/password/i)?.[0], {
       target: { value: "mock@12345" },

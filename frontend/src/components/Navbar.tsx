@@ -1,15 +1,15 @@
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import {
   AppBar,
   Toolbar,
   IconButton,
-  Typography,
   Button,
   Tooltip,
   useMediaQuery,
   MenuItem,
   Menu,
   ListItemIcon,
+  Box,
 } from "@mui/material";
 import {
   AccountCircleOutlined,
@@ -23,6 +23,7 @@ import {
 } from "@mui/icons-material";
 import { useAuth } from "../contexts/AuthContext";
 import { useState } from "react";
+import logo from "../assets/tales-logo.png";
 
 interface Props {
   toggleTheme: () => void;
@@ -30,6 +31,7 @@ interface Props {
 export default function Navbar({ toggleTheme }: Props) {
   const isMobile = useMediaQuery("(max-width:600px)");
   const { token, setToken } = useAuth();
+  const navigate = useNavigate();
   const [profileMenu, setProfileMenu] = useState<null | HTMLElement>(null);
   const open = Boolean(profileMenu);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -42,14 +44,15 @@ export default function Navbar({ toggleTheme }: Props) {
   return (
     <AppBar position="sticky">
       <Toolbar sx={{ gap: 1 }}>
-        <Typography
-          variant="h6"
-          component={RouterLink}
-          to="/"
-          sx={{ textDecoration: "none", color: "inherit", flexGrow: 1 }}
-        >
-          MiniBlog
-        </Typography>
+        <Box sx={{ color: "inherit", flexGrow: 1 }}>
+          <img
+            src={logo}
+            alt={"logo"}
+            height={50}
+            style={{ cursor: "pointer" }}
+            onClick={() => navigate("/")}
+          />
+        </Box>
 
         <Tooltip title="Toggle light/dark">
           <IconButton

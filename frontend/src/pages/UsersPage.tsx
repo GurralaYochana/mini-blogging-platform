@@ -14,17 +14,16 @@ import {
 } from "@mui/material";
 import { OpenInFull } from "@mui/icons-material";
 import { useAuth } from "../contexts/AuthContext";
-import axios from "../api/axios";
 import type { Author } from "./Home";
 import { stringAvatar } from "../utils/avatarColor";
+import { getUsers } from "../api/auth";
 
 export default function UsersPage() {
   const { setErrorMsg } = useAuth();
   const [users, setUsers] = useState<Author[] | null>(null);
 
   useEffect(() => {
-    axios
-      .get("/users")
+    getUsers()
       .then((res) => setUsers(res.data.data))
       .catch(() => setErrorMsg("Error while fetching Users"));
   }, []);
@@ -39,7 +38,7 @@ export default function UsersPage() {
 
   return (
     <Container maxWidth="sm" sx={{ mt: 4 }}>
-      <Typography variant="h4" gutterBottom>
+      <Typography variant="h4" gutterBottom data-testid="all-users-title">
         All Users
       </Typography>
 

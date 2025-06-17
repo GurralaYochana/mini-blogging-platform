@@ -14,6 +14,7 @@ describe("Register Page", () => {
     username: "Test user",
     email: "testuser@gmail.com",
   };
+
   it("creates new user and stores token", async () => {
     vi.spyOn(authApi, "register").mockResolvedValueOnce({
       data: {

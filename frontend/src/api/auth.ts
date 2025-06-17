@@ -8,3 +8,5 @@ export const register = (data: {
   email: string;
   password: string;
 }) => api.post("/auth/register", data);
+
+export const getUsers = () => api.get("/users");

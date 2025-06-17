@@ -17,7 +17,7 @@ export const Posts: React.FC<Props> = ({ posts, setPosts }) => {
 
   return (
     <>
-      {posts.map((p) => (
+      {posts?.map((p) => (
         <Card key={p._id} sx={{ mb: 2, boxShadow: 2 }}>
           <CardContent>
             {/* clickable blog title */}
