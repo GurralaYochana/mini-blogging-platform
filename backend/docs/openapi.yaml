@@ -149,7 +149,16 @@ paths:
     get:
       summary: List all users
       tags: [Users]
-      security: [{ bearerAuth: [] }]
+      # security: [{ bearerAuth: [] }]
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: header
+          name: Authorization
+          description: Authorization, `Bearer <token>`
+          required: true
+          schema:
+            type: integer
       responses:
         "200":
           description: Array of users (password omitted)
@@ -171,8 +180,15 @@ paths:
     get:
       summary: Get single user
       tags: [Users]
-      security: [{ bearerAuth: [] }]
+      security:
+        - bearerAuth: []
       parameters:
+        - in: header
+          name: Authorization
+          description: Authorization, `Bearer <token>`
+          required: true
+          schema:
+            type: integer
         - in: path
           name: id
           required: true
@@ -199,7 +215,15 @@ paths:
     get:
       summary: List all posts (newest first)
       tags: [Posts]
-      security: [{ bearerAuth: [] }]
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: header
+          name: Authorization
+          description: Authorization, `Bearer <token>`
+          required: true
+          schema:
+            type: integer
       responses:
         "200":
           description: Array of posts with author info
@@ -216,7 +240,15 @@ paths:
     post:
       summary: Create a post
       tags: [Posts]
-      security: [{ bearerAuth: [] }]
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: header
+          name: Authorization
+          description: Authorization, `Bearer <token>`
+          required: true
+          schema:
+            type: integer
       requestBody:
         required: true
         content:
@@ -243,8 +275,15 @@ paths:
     get:
       summary: Get one post
       tags: [Posts]
-      security: [{ bearerAuth: [] }]
+      security:
+        - bearerAuth: []
       parameters:
+        - in: header
+          name: Authorization
+          description: Authorization, `Bearer <token>`
+          required: true
+          schema:
+            type: integer
         - in: path
           name: id
           required: true
@@ -269,8 +308,15 @@ paths:
     put:
       summary: Update a post (owner only)
       tags: [Posts]
-      security: [{ bearerAuth: [] }]
+      security:
+        - bearerAuth: []
       parameters:
+        - in: header
+          name: Authorization
+          description: Authorization, `Bearer <token>`
+          required: true
+          schema:
+            type: integer
         - in: path
           name: id
           required: true
@@ -300,8 +346,15 @@ paths:
     delete:
       summary: Delete a post (owner only)
       tags: [Posts]
-      security: [{ bearerAuth: [] }]
+      security:
+        - bearerAuth: []
       parameters:
+        - in: header
+          name: Authorization
+          description: Authorization, `Bearer <token>`
+          required: true
+          schema:
+            type: integer
         - in: path
           name: id
           required: true
@@ -322,8 +375,15 @@ paths:
     get:
       summary: List posts by a specific user
       tags: [Posts]
-      security: [{ bearerAuth: [] }]
+      security:
+        - bearerAuth: []
       parameters:
+        - in: header
+          name: Authorization
+          description: Authorization, `Bearer <token>`
+          required: true
+          schema:
+            type: integer
         - in: path
           name: userId
           required: true
