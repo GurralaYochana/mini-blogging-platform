@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Typography, Container, Box } from "@mui/material";
+import { Typography, Container, Box, Divider } from "@mui/material";
 import { useAuth } from "../contexts/AuthContext";
 import { Posts } from "../components/Post";
 import { PostsSkeleton } from "../components/Skeletons/PostsSkeleton";
@@ -35,7 +35,13 @@ export default function Home() {
 
   if (!token) {
     return (
-      <Box display="flex" flexDirection="column" alignItems="center">
+      <Box
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        height={"50vh"}
+        justifyContent={"center"}
+      >
         <Typography variant="h6" gutterBottom>
           Please login to explore more in MiniBlog.
         </Typography>
@@ -48,6 +54,7 @@ export default function Home() {
       <Typography variant="h4" gutterBottom data-testid="latest-posts-title">
         Latest Posts
       </Typography>
+      <Divider sx={{ mb: "2rem" }} />
 
       {loading && <PostsSkeleton />}
 
