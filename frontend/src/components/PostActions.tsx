@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import {
   IconButton,
   ListItemIcon,
@@ -19,6 +19,7 @@ type PostActionType = {
 };
 
 export const PostActions = ({ postId, setPosts }: PostActionType) => {
+  const navigate = useNavigate();
   const { setSuccessMsg, setErrorMsg } = useAuth();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -33,7 +34,9 @@ export const PostActions = ({ postId, setPosts }: PostActionType) => {
     try {
       await deletePost(postId);
       setSuccessMsg("Post deleted successfully");
-      await setPosts?.((prev) => prev.filter((p) => p._id !== postId));
+      if (setPosts) {
+        await setPosts((prev) => prev.filter((p) => p._id !== postId));
+      } else navigate(-1);
     } catch (err) {
       setErrorMsg("Error while deleting post");
       console.error(err);
