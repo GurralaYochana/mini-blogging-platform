@@ -79,7 +79,7 @@ export default function CreateNEditPost({ edit = false }: { edit?: boolean }) {
       try {
         await updatePost(id, blogDetails);
         setSuccessMsg("Post updated successfully!");
-        setTimeout(() => nav("/"), 800);
+        setTimeout(() => nav(-1), 800);
       } catch (err) {
         setErrorMsg("Error while updating post");
         console.error(err);
